@@ -21,7 +21,7 @@
     width: auto;
     margin: 0 0 0 0;
     height: auto;
-    background-color: #0F0F0F;
+    background-color:#FAFAFA; /*azure*/ /*mintcream*/
     
 }
 
@@ -106,3 +106,8 @@ ul {
     margin-bottom: 20px;
     position: relative;
 } */
+
+#outer  h2{
+    color: black;
+}
+

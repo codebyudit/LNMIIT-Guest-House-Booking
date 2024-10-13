@@ -7,14 +7,14 @@ const Footer = () => {
     <>
     <div className='footer'>
         <div className='container ct1'>
-            <div className='row'>
+            <div className='row inner-ct'>
                 <div className="col-md-6 col-lg-4 col-12 ft-1">
                     <h3><span>LNMIIT JAIPUR</span> </h3>
                     <p>Rupa ki Nangal,</p>
                     <p>Post-Sumel, Via, Jamdoli,</p>
                     <p>Jaipur, Rajasthan 302031</p>
                 </div>
-                <div className="col-md-6 col-lg-3 col-12 ft-2">
+                <div className="col-md-6 col-lg-4 col-12 ft-2">
                     <h5>Useful Links</h5>
                     <ul>
                         <li className="nav-item">

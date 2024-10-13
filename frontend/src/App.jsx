@@ -15,7 +15,8 @@ import FacultyLogin from './Components/FacultyLogin/FacultyLogin';
 import FacultyRegister from './Components/FacultyRegister/FacultyRegister';
 import Guidelines from './Pages/Guidelines/guidelines';
 import Contactus from './Pages/ContactUs/contactus';
-
+import Services from './Pages/Services/services';
+import Gallery from './Pages/Gallery/gallery';
 const App = () => {
   return (
     <UserProvider>
@@ -30,11 +31,13 @@ const App = () => {
           <Route path='/guidelines' element={<Guidelines />} />
           <Route path='/contactus' element={<Contactus />} />
           <Route path='/Form' exact element={<GuestHouseBookingForm />} />
-          <Route path='/login/student' element={<Login />} />
-          <Route path='/register/student' element={<Register />} />
+          {/* <Route path='/login/student' element={<Login />} /> */}
+          <Route path='/register' element={<Register />} />
           <Route path='/register/faculty' element={<FacultyRegister />} />
-          <Route path='/login/faculty' element={<FacultyLogin />} />
+          {/* <Route path='/login/faculty' element={<FacultyLogin />} /> */}
           <Route path='/LoginModal' exact element={<LoginModal />} />
+          <Route path='/services' element={<services />} />
+          <Route path='/gallery' element={<gallery />} />
         </Routes>
       </div>
     </UserProvider>

@@ -218,18 +218,18 @@ const GuestHouseBookingForm = () => {
                 </div>
 
                 <div className="input-field">
-                  <label>Number of Males</label>
+                  <label>Total Number of Persons</label>
                   <input
                     type="number"
                     name="numberOfMales"
-                    placeholder="Enter no. of males"
+                    placeholder="Enter no. of people"
                     value={formData.numberOfMales}
                     onChange={handleChange}
                   />
                   {errorMessage5 && <div className="error-message">{errorMessage5}</div>}
                 </div>
 
-                <div className="input-field">
+                {/* <div className="input-field">
                   <label>Number of Females</label>
                   <input
                     type="number"
@@ -239,9 +239,9 @@ const GuestHouseBookingForm = () => {
                     onChange={handleChange}
                   />
                   {errorMessage6 && <div className="error-message">{errorMessage6}</div>}
-                </div>
+                </div> */}
 
-                <div className="input-field">
+                {/* <div className="input-field">
                   <label>Number of Children</label>
                   <input
                     type="number"
@@ -251,7 +251,7 @@ const GuestHouseBookingForm = () => {
                     onChange={handleChange}
                   />
                   {errorMessage7 && <div className="error-message">{errorMessage7}</div>}
-                </div>
+                </div> */}
 
                 <div className="input-field">
                   <label>Guest Name</label>

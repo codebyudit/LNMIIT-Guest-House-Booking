@@ -12,6 +12,8 @@ import Availability from "../Availability/Availability.jsx";
 // import ContactUS from 
 import Contactus from "../ContactUs/contactus.jsx";
 import download33 from '../../images/download33.png';
+import Services from "../Services/services.jsx";
+import Gallery from "../Gallery/gallery.jsx";
 
 
 
@@ -41,6 +43,8 @@ const Home = () => {
         className="lnm"
         alt="LNMIIT Jaipur"
         style={{
+          backgroundSize: "cover", // Ensure the image is covered
+          backgroundPosition: "center", // Center the image
           width: "100%",
           maxWidth: "100%", // Ensure image fits within its container
           maxHeight: "100%", // Ensure image fits within its container
@@ -60,11 +64,35 @@ const Home = () => {
         <div className="start-cards">
           <div className="cardss">
             <Card title={"STANDARD ROOMS IN GUEST HOUSE"} 
-            info={"12 Standard Rooms - Ground Floor - 8 Rooms, First Floor - 4 Rooms."} />
+            info={
+              <ul>
+                <li>
+                  12 Standard Rooms
+                </li>
+                <li>
+                  Ground Floor - 8 Rooms
+                </li>
+                <li>
+                  First Floor - 4 Rooms
+                </li>
+              </ul>
+               } />
           </div>
           <div className="cardss">
             <Card title={"DELUXE ROOMS IN GUEST HOUSE"} 
-            info={"2 VIP Rooms - Ground Floor - 0 Rooms, First Floor - 2 Rooms."} />
+            info={
+              <ul>
+                <li>
+                  3 VIP Rooms
+                </li>
+                <li>
+                  Ground Floor - 1 Room
+                </li>
+                <li>
+                  First Floor - 2 Rooms
+                </li>
+              </ul>
+              } />
           </div>
         </div>
       </div >
@@ -86,7 +114,12 @@ const Home = () => {
     <div>
       <Contactus />
     </div>
-
+    {/* <div>
+      <Services />
+    </div> */}
+    {/* <div>
+      <Gallery />
+    </div> */}
     <div>
       <Footer/>
     </div>

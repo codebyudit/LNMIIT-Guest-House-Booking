@@ -2,18 +2,26 @@
 import "../../App.css";
 import image22 from "../../images/logo2_145x80.png";
 import "./extra.css";
-
-
-
-
 // import { NavLink } from 'react-router-dom';
 import { Nav, Bars, NavLink, NavBtn, NavBtnLink, NavMenu } from './NavbarElements';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
+// import { Link } from "react-router-dom";
+import { useContext } from 'react';
 
 const Navbar = () => {
+  const {user , setUser} = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    setUser(null);
+    navigate("/");
+  };
  
   return (
     <>
       <Nav>
+        {/* ------lnmiit main logo-------- */}
+
         <NavLink to='/'>
           <img src={image22} alt="logo" className="imge"
           onClick={(e) => {
@@ -30,14 +38,21 @@ const Navbar = () => {
             }
           }} />
         </NavLink>
+
+         {/* ---------------------------------------------- */}
+
         <Bars />
+
+        {/* ---------------------------------------------- */}
+
         <div className="main-div">
+
         <NavMenu>
           <NavLink
             to="/about"
             className={"abt-btn"}
             style={({ isActive }) => ({
-              color: isActive ? 'red' : 'inherit',
+              color: isActive ? 'red' : 'inhert',
             })}
 
             onClick={(e) => {
@@ -53,30 +68,62 @@ const Navbar = () => {
                 });
               }
             }}
-
-            // onClick={(e) => {
-            //   e.preventDefault(); // Prevent the default behavior of the link
-            //   document.getElementById("outer").scrollIntoView({ behavior: "smooth" }) // Scroll to the section
-            // }}
           >
             About Us
           </NavLink>
+
+          {/* ------------------------------------ */}
+
           <NavLink
             to="/services"
             style={({ isActive }) => ({
               color: isActive ? 'red' : 'inherit',
             })}
+
+            onClick={(e) => {
+              e.preventDefault(); 
+              const navbarHeight = document.querySelector(Nav)?.offsetHeight || 0; //finds navbar fixed height
+              const element = document.getElementById("services");
+              if (element) {
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY  - navbarHeight;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth"
+                });
+              }
+            }}
           >
             Services
           </NavLink>
+
+          {/* ------------------------------------ */}
+
           <NavLink
-            to="/charges"
+            to="/gallery"
             style={({ isActive }) => ({
               color: isActive ? 'red' : 'inherit',
             })}
+
+            onClick={(e) => {
+              e.preventDefault(); 
+              const navbarHeight = document.querySelector(Nav)?.offsetHeight || 0; //finds navbar fixed height
+              const element = document.getElementById("gallery");
+              if (element) {
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY  - navbarHeight;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth"
+                });
+              }
+            }}
           >
-            Charges
+            Gallery
           </NavLink>
+
+          {/* -------------------------------------- */}
+
           <NavLink
             to="/availability"
             style={({ isActive }) => ({
@@ -96,14 +143,12 @@ const Navbar = () => {
                 });
               }
             }}
-
-            // onClick={(e) => {
-            //   e.preventDefault(); // Prevent the default behavior of the link
-            //   document.getElementById("availability").scrollIntoView({ behavior: "smooth" }); // Scroll to the section
-            // }}
           >
             Availability
           </NavLink>
+
+          {/* ----------------------------------------- */}
+
           <NavLink
             to="/guidelines"
             style={({ isActive }) => ({
@@ -132,6 +177,9 @@ const Navbar = () => {
           >
             Guidelines
           </NavLink>
+
+          {/* --------------------------------------------- */}
+
           <NavLink
             to="/contactus"
             style={({ isActive }) => ({
@@ -158,15 +206,25 @@ const Navbar = () => {
           >
             Contact Us
           </NavLink>
+
         </NavMenu>
         </div>
+
+        {/* --------button part of navbar--------------- */}
+
         <NavBtn className="btn-div">
           <NavBtnLink className="btn1" to="/form">
             BOOK NOW
           </NavBtnLink>
-          <NavBtnLink className="btn2" to="/LoginModal">
+         
+
+          {user && <NavBtnLink onClick={handleLogout}>{user.username}</NavBtnLink>}
+
+         {!user && (
+           <NavBtnLink className="btn2" to="/LoginModal"> 
             SIGN IN
           </NavBtnLink>
+         )}
         </NavBtn>
 
       </Nav>
