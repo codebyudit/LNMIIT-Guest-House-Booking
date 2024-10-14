@@ -29,13 +29,6 @@
     margin: 0 75px;
 }
 
-.start-cards{
-    position:absolute;
-    display: flex;
-    margin-top: 106px; 
-    justify-content:space-between;
-    /* margin-bottom: -2px; */
-}
 
 
 
@@ -74,10 +67,8 @@ h3,p{
     margin-bottom: 0.5rem;
     border-radius: 3px;
 }
-/* 
-.btn button:hover{
-    background: rgba(27, 156, 252, 0.1);
-} */
+
+
 
 .btn > a{
     text-transform: uppercase;

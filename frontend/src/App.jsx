@@ -36,8 +36,8 @@ const App = () => {
           <Route path='/register/faculty' element={<FacultyRegister />} />
           {/* <Route path='/login/faculty' element={<FacultyLogin />} /> */}
           <Route path='/LoginModal' exact element={<LoginModal />} />
-          <Route path='/services' element={<services />} />
-          <Route path='/gallery' element={<gallery />} />
+          <Route path='/services' element={<Services />} />
+          <Route path='/gallery' element={<Gallery />} />
         </Routes>
       </div>
     </UserProvider>

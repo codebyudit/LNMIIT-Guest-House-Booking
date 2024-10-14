@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div >
        
-       {/* <main id="main"> */}
+       
 
         <section id='outer' >
             <div className='s-title'>

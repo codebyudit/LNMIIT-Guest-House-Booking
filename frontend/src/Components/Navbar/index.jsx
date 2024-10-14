@@ -2,12 +2,12 @@
 import "../../App.css";
 import image22 from "../../images/logo2_145x80.png";
 import "./extra.css";
-// import { NavLink } from 'react-router-dom';
 import { Nav, Bars, NavLink, NavBtn, NavBtnLink, NavMenu } from './NavbarElements';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
-// import { Link } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import HamBurger from "../HamBurger/Hamburger";
+
 
 const Navbar = () => {
   const {user , setUser} = useContext(UserContext);
@@ -17,6 +17,8 @@ const Navbar = () => {
     navigate("/");
   };
  
+ 
+
   return (
     <>
       <Nav>
@@ -39,11 +41,11 @@ const Navbar = () => {
           }} />
         </NavLink>
 
-         {/* ---------------------------------------------- */}
+         {/* ------------------- hamburger menu --------------------------- */}
 
-        <Bars />
-
-        {/* ---------------------------------------------- */}
+        <HamBurger/>
+          
+        {/* --------------------ABOUT US ----------------------- */}
 
         <div className="main-div">
 
@@ -72,7 +74,7 @@ const Navbar = () => {
             About Us
           </NavLink>
 
-          {/* ------------------------------------ */}
+          {/* ----------------- SERVICES ------------------- */}
 
           <NavLink
             to="/services"
@@ -97,7 +99,7 @@ const Navbar = () => {
             Services
           </NavLink>
 
-          {/* ------------------------------------ */}
+          {/* ----------------- GALLERY ------------------- */}
 
           <NavLink
             to="/gallery"
@@ -122,7 +124,7 @@ const Navbar = () => {
             Gallery
           </NavLink>
 
-          {/* -------------------------------------- */}
+          {/* -------------- AVAILABILITY ------------------------ */}
 
           <NavLink
             to="/availability"
@@ -147,7 +149,7 @@ const Navbar = () => {
             Availability
           </NavLink>
 
-          {/* ----------------------------------------- */}
+          {/* ------------------- GUIDELINES ---------------------- */}
 
           <NavLink
             to="/guidelines"
@@ -169,16 +171,11 @@ const Navbar = () => {
                 });
               }
             }}
-
-            // onClick={(e) => {
-            //   e.preventDefault(); // Prevent the default behavior of the link
-            //   document.getElementById("guidelines").scrollIntoView({ behavior: "smooth" , block: "start" , inline: "start" }); // Scroll to the section
-            // }}
           >
             Guidelines
           </NavLink>
 
-          {/* --------------------------------------------- */}
+          {/* -------------------- CONTACT US ------------------------- */}
 
           <NavLink
             to="/contactus"
@@ -199,10 +196,6 @@ const Navbar = () => {
                 });
               }
             }}
-            // onClick={(e) => {
-            //   e.preventDefault(); // Prevent the default behavior of the link
-            //   document.getElementById("contact").scrollIntoView({ behavior: "smooth" }); // Scroll to the section
-            // }}
           >
             Contact Us
           </NavLink>

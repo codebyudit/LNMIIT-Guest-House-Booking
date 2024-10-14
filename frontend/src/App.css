@@ -56,46 +56,10 @@
     /* font-size: 10000px; */
   /* } */ 
   
-  .lnm{
-    /* background-size:center;
-    background-position: center; */
-    /* height: 600px; */
-    width: 1498px;
-    height: 900px;
-  }
   
-  .heading1{
-    
-      /* Font & Text */
-      font-family: Poppins, sans-serif;
-      font-size: 56px;
-      font-style: normal;
-      font-variant: normal;
-      font-weight: 700;
-      letter-spacing: normal;
-      line-height: 72px;
-      text-decoration: none solid rgb(14, 112, 148);
-      text-align:center;
-    
-    
-      /* Color & Background */
-      background-attachment: scroll;
   
-      background-image: none;
-      background-position: 0% 0%;
-      background-repeat: repeat;
-      color: rgb(14, 112, 148);
-    
-      /* Box */
-      height: 143.977px;
-      width: 1116.02px;
-      margin:100px auto auto auto;
-      padding: 0px;
-  }
   
-  .h2-heading{
-     color: #000;
-  }
+
   
   .App {
     text-align: center;

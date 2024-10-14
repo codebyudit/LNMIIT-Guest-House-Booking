@@ -58,6 +58,9 @@ export const Bars = styled(FaBars)`
     display: none;
     color: #fff;
 
+    
+
+
     @media screen and (max-width: 870px) {
         display: block;
         position: absolute;
@@ -145,6 +148,8 @@ export const NavBtnLink = styled(Link)`
         padding: 6px 12px; 
     }
 `;
+
+
 
 
 // export const StyledBurger = styled.div`
