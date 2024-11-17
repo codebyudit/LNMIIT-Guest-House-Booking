@@ -15,7 +15,7 @@ const Sidebar = () => {
             <NavLink to='/roomset' className="sidebar-option">
                 <p>Room Setup</p>
             </NavLink>
-            <NavLink to='/info' className="sidebar-option">
+            <NavLink to='/roomstatus' className="sidebar-option">
                 <p>Room Status</p>
             </NavLink>
         </div>
