@@ -8,7 +8,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
     text-align: center; 
     position: relative;
 }
@@ -109,3 +108,44 @@
         /* overflow: hidden; */
      } 
  } 
+
+ @media screen and (min-width: 485px ) and (max-width: 885px) {
+    .lnm{
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .heading1{
+        width: auto;
+        font-size: 42px;
+        line-height: 48px;
+    }
+
+    .h2-heading{
+        font-size: 28px;
+        position: relative;
+        line-height: 40px;
+        width: auto;
+        margin-top: 12.5%;
+        margin-bottom: 2.5%;
+    }
+
+
+    .start-cards{
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;
+        position: absolute;
+        top: 145%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        gap: 10px;
+    }
+
+    .card-container{
+        margin-right: auto;
+        margin-left: auto;
+        /* overflow: hidden; */
+     } 
+ }

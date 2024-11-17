@@ -232,7 +232,7 @@ const Navbar = () => {
 
          {!user && (
            <NavBtnLink className="btn2" to="/LoginModal"> 
-            SIGN IN
+            BOOK NOW
           </NavBtnLink>
          )}
         </NavBtn>

@@ -51,7 +51,7 @@ const Menu = styled.ul`
   position: absolute;
   top: 60px;
   right: 0px;
-  width: 100%;
+  width: 50%;
   background-color: #fafafa;
   padding: 20px;
   border-radius: 0 0 5px 5px;
