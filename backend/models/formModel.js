@@ -1,22 +1,22 @@
 import mongoose, { mongo } from "mongoose";
 
 const formSchema = new mongoose.Schema({
-    name: {
+    studentName: {
         type: String,
         required: true
     },
 
-    rollno: {
+    studentRollNumber: {
         type: String,
         required: true
     },
 
-    department: {
+    studentDepartment: {
         type: String,
         required: true
     },
 
-    phoneno: {
+    studentMobileNumber: {
         type: String,
         required: true
     },
@@ -26,7 +26,33 @@ const formSchema = new mongoose.Schema({
         required: true
     },
 
-    guests: {
+    numberOfMales: {
+        type: Number,
+        required: true
+    },
+
+    numberOfFemales: {
+        type: Number,
+        required: true
+    },
+
+    numberOfChildren: {
+        type: Number,
+        required: true
+    },
+
+    
+    guestMobileNumber: {
+        type: String,
+        required: true
+    },
+
+    guestName: {
+        type: String,
+        required: true
+    },
+
+    numberOfRooms: {
         type: Number,
         required: true
     },
@@ -43,7 +69,20 @@ const formSchema = new mongoose.Schema({
 
     arrivalTime: {
         type: String,
+    },
+
+    guestRelation:  {
+        type: String,
         required: true
+    },
+
+    guestPurpose: {
+        type: String,
+        required: true
+    },
+    gender: {
+        type: String,
+        //required: true
     }
 })
 

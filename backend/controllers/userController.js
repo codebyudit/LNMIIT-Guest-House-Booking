@@ -5,20 +5,20 @@ import validator from "validator";
 import { sendEmail } from "../controllers/nodeMailerController.js"
 
 const createToken = (id) => {
+  console.log('JWT_SECRET:', process.env.JWT_SECRET);
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '3d' });
-    console.log('JWT_SECRET:', process.env.JWT_SECRET);
 };
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password , username} = req.body;
     try {
       const user = await userModel.findOne({ email });
       if (!user) {
-        res.json({ success: false, message: "user does not exist" });
+        return res.json({ success: false, message: "user does not exist" });
       }
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        res.json({ success: false, message: "invalid credentials" });
+        return res.json({ success: false, message: "invalid credentials" });
       }
       const token = createToken(user._id);
       res.json({ success: true, token ,  name: user.name});
@@ -31,7 +31,7 @@ const login = async (req, res) => {
   
   // register user
 const register = async (req, res) => {
-    const { name, email, password } = req.body;
+    const { username, email, password , userType} = req.body;
     try {
       const exist = await userModel.findOne({ email });
       if (exist) {
@@ -49,9 +49,10 @@ const register = async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
       const newUser = new userModel({
-        name: name,
+        username: username,
         email: email,
         password: hashedPassword,
+        userType: userType
       });
       const user = await newUser.save();
       const token = createToken(user._id);
