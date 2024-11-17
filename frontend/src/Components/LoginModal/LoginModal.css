@@ -1,6 +1,6 @@
 
 .outer-div {
-    /* position: relative; */
+    position: relative;
     background-image: url('../../images/download33.png');
     background-size: cover;
     background-position: center;
@@ -9,21 +9,19 @@
 
 
  .inner-div1{
-    background: rgba(255, 255, 255, 0.8); 
-    padding: 20px;
-    padding-top: 20px;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    margin-top: 42px;
-    /* margin-bottom: -100px; */
-
-   
-    border-radius: 10px;
-    backdrop-filter: blur(10px);  
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    /* max-width: 100%; */
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  width: 90%; /* Adjusted for responsiveness */
+  height: auto;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
    
   .main-heading {
@@ -33,15 +31,30 @@
     
   }
 
-  
-  .buttn{
-    margin-right: 230.1px;
-  }
-
   .form-label{
     color: black;
   }
 
-  .btn-1{
-    margin-bottom: 5px;
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Add space between the buttons */
+  }
+  
+  .btn-container .btn {
+    width: 100%; /* Make buttons take up the full width */
+    /* max-width: 300px; Optional: limit the maximum width */
+  }
+
+  @media (min-width: 768px) {
+    .inner-div {
+      width: 70%; /* Adjusted for tablets */
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .inner-div {
+      width: 40%; /* Adjusted for larger screens */
+    }
   }

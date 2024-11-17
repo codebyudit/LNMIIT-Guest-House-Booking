@@ -130,14 +130,16 @@ const RegisterModal = () => {
                 required
               />
             </div>
-
-            <button type="submit" className="btn btn-primary btn-1">
-              Register
-            </button>
-            <button type="button" className="btn btn-secondary"
-             onClick={handleBackToHome} >
-              Back to Home
-            </button>
+            <div className="btn-container">
+              <button type="submit" className="btn btn-primary">
+                Register
+              </button>
+              <button type="button" className="btn btn-secondary"
+              onClick={handleBackToHome} >
+                Back to Home
+              </button>
+            </div>
+           
           </form>
           <div className="mt-1">
             <p style={{color:"black"}}>

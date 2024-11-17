@@ -12,7 +12,7 @@ const Guidelines = () => {
             </div>
             <div className='ct10'>
             <div className='gh-card shadow'>
-              <ul>
+              <ul className="all-points">
                 <li>
                   <i className='bi-check2-all'></i>
                   <b>Check-in Time: 11:30 AM</b>
@@ -39,10 +39,10 @@ const Guidelines = () => {
                 </li>
                 <li>
                   <i className='bi-check2-all'></i>
-                  <b>Payment Detail:</b>
+                  <b>Payment Detail: </b>
                   Payment for guest room service should be made at Institute Account.
 
-                  <ul className='mt-2 w-100'>
+                  <ul className='remove-bl all-points mt-2 w-100'>
                     <li>
                       <ol className='list-group-numbered list-group-flush'>
                         <li className='list-group-item d-flex justify-content-between align-items-start py-1'>
@@ -81,7 +81,7 @@ const Guidelines = () => {
                 <li>
                   <i className='bi-check2-all'></i>
                   <b>Cancellation Charges:</b>
-                  <ul className='mt-2'>
+                  <ul className='all-points mt-2'>
                     <li>
                       <i className='bi-check2-all'></i>
                       5% of total rent will be charged if cancellation is done between seven days and one months (30-07 days) before date of arrival.

@@ -24,20 +24,11 @@ const Navbar = () => {
       <Nav>
         {/* ------lnmiit main logo-------- */}
 
-        <NavLink to='/'>
+        <NavLink to="/">
           <img src={image22} alt="logo" className="imge"
           onClick={(e) => {
             e.preventDefault(); 
-            const navbarHeight = document.querySelector(Nav)?.offsetHeight || 0; //finds navbar fixed height
-            const element = document.getElementById("home");
-            if (element) {
-              const elementPosition = element.getBoundingClientRect().top;
-              const offsetPosition = elementPosition + window.scrollY  - navbarHeight;
-              window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-              });
-            }
+            window.location.href = "/"; //when image is clicked, the website refreshes and takes us to home page
           }} />
         </NavLink>
 
@@ -45,11 +36,37 @@ const Navbar = () => {
 
         <HamBurger/>
           
-        {/* --------------------ABOUT US ----------------------- */}
+        
 
         <div className="main-div">
-
         <NavMenu>
+
+              {/* ----------------- HOME ------------------- */}  
+
+          <NavLink
+            to="/home"
+            style={({ isActive }) => ({
+              color: isActive ? 'red' : 'inherit',
+            })}
+            
+            onClick={(e) => {
+              e.preventDefault(); 
+              const navbarHeight = document.querySelector(Nav)?.offsetHeight || 0; //finds navbar fixed height
+              const element = document.getElementById("home");
+              if (element) {
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY  - navbarHeight;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth"
+                });
+              }
+            }}
+          >
+            Home
+          </NavLink>
+              {/* --------------------ABOUT US ----------------------- */}
+
           <NavLink
             to="/about"
             className={"abt-btn"}
@@ -206,9 +223,9 @@ const Navbar = () => {
         {/* --------button part of navbar--------------- */}
 
         <NavBtn className="btn-div">
-          <NavBtnLink className="btn1" to="/form">
+          {/* <NavBtnLink className="btn1" to="/form">
             BOOK NOW
-          </NavBtnLink>
+          </NavBtnLink> */}
          
 
           {user && <NavBtnLink onClick={handleLogout}>{user.username}</NavBtnLink>}

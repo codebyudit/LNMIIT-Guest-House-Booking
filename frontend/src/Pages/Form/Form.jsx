@@ -131,7 +131,7 @@ const GuestHouseBookingForm = () => {
 
   return (
     <div className="bodyy">
-      <div className="container">
+      <div id = "in-div" className="container">
         <header>Room Booking</header>
 
         <form onSubmit={handleSubmit}>
@@ -268,7 +268,7 @@ const GuestHouseBookingForm = () => {
                 <div className="input-field">
                   <label>Mobile Number</label>
                   <input
-                    type="number"
+                    type="tel"
                     name="guestMobileNumber"
                     placeholder="Enter mobile number (10 digits)"
                     value={formData.guestMobileNumber}

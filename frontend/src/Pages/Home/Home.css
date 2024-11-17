@@ -1,6 +1,7 @@
 #home{
     top: 80px;
     position: relative;
+    overflow-x: hidden;
 }
 
 #img-outer-div{
@@ -53,6 +54,7 @@
     width: 1116.02px;
     margin:100px auto auto auto;
     padding: 0px;
+    
 }
 
 .h2-heading{
@@ -68,44 +70,6 @@
     /* margin-bottom: -2px; */
 }
 
-
-
-
- /* Media Queries for medium screens (tablets) */
-/* @media screen and (max-width: 1023px) {
-    .heading1 {
-        font-size: 48px;
-        line-height: 64px;
-        width: 900px;
-    }
-
-    .main-heading-div {
-        top: 25%;
-    }
-
-    .lnm {
-        height: auto;
-        width: 90%;
-    }
-}
-
-/* Media Queries for smaller screens (mobiles) */
-/* @media screen and (max-width: 768px) {
-    .heading1 {
-        font-size: 36px;
-        line-height: 48px;
-        width: 100%;
-    }
-
-    .main-heading-div {
-        top: 30%;
-    }
-
-    .lnm {
-        height: auto;
-        width: 100%;
-    }
-} */ 
 
 @media screen and (max-width: 480px) {
     .lnm{
@@ -129,11 +93,13 @@
 
     .start-cards{
         flex-direction: column;
-        justify-content: space-between; 
+        justify-content: center; 
+        align-items: center;
         position: absolute;
-        top: 60%;
-        right: -90%;
-        transform: scale(0.8);
+        top: 120%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
         gap: 10px;
     }
 

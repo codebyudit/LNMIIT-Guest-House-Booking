@@ -7,17 +7,14 @@
     font-family: 'Poppins', sans-serif;
 }
 .bodyy{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
     background-image: url('../../images/download33.png');
     background-size: cover;
     background-position: center;
-    /* height: 660px; */
 }
-.container{
-    position: relative;
+
+#in-div{
+    /* position: relative; */
     max-width: 900px;
     width: 100%;
     border-radius: 6px;
@@ -25,14 +22,15 @@
     margin: 0 15px;
     margin-top: 80px;
     background-color: #fff;
-    
 }
+
 .container header{
     position: relative;
     font-size: 20px;
     font-weight: 600;
     color: #333;
 }
+
 .container header::before{
     content: "";
     position: absolute;
@@ -43,6 +41,7 @@
     border-radius: 8px;
     background-color: #4070f4;
 }
+
 .container form{
     position: relative;
     margin-top: 16px;
@@ -50,6 +49,7 @@
     background-color: #fff;
     overflow: hidden;
 }
+
 .container form .form{
     position: absolute;
     background-color: #fff;

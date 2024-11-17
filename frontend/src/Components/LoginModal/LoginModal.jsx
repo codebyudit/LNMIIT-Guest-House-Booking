@@ -41,7 +41,7 @@ const LoginModal = () => {
     try {
       const response = await axios.post('http://localhost:4001/api/user/login', { email, password, username });
 
-      if (response.status === 200) {
+      if (response.data.success) {
         console.log("Login successful", response.data);
         setUser({username})
         
@@ -55,16 +55,18 @@ const LoginModal = () => {
         }
       } else {
         console.error(response.data.msg);
+        alert("User does not exist. Please check your credentials or register.");
       }
     } catch (error) {
       console.error("Login error:", error);
+      alert("An error occurred during login. Please try again.");
     }
   };
 
 
   return (
     <div className="outer-div d-flex justify-content-center align-items-center vh-100">
-      <div className="inner-div1 row">
+      <div className="inner-div row">
         <div className="col">
           <h4 className="main-heading">USER LOGIN</h4>
           <form onSubmit={handleSubmit}>
@@ -117,37 +119,24 @@ const LoginModal = () => {
               />
             </div>
 
-            {/* <div className="mb-3">
-              <label className="form-label">Captcha</label>
-              <div className="d-flex align-items-center">
-                <div className="captcha bg-light p-2 border">8, 3, 5, 4, 1</div>
-                <input
-                  type="text"
-                  className="form-control ms-2"
-                  value={captchaInput}
-                  onChange={handleCaptchaChange}
-                  placeholder="Enter Captcha"
-                  required
-                />
-              </div>
-            </div> */}
-            {/* <div className="btns"> */}
-            <button type="submit" className="btn btn-primary btn-1">
-              Login
-            </button>
-            <button type="button" className="buttn btn btn-secondary"
-              onClick={handleBackToHome} >
-              Back to Home
-            </button>
+            
+            <div className="btn-container">
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+              <button type="button" className=" btn btn-secondary"
+                onClick={handleBackToHome} >
+                Back to Home
+              </button>
+            </div>            
             <div className="mt-1">
-              <p style={{ color: 'black' }}>
-                Don't have an account? {" "}
+              <p style={{ color:"black"}}>
+                Don't have an account?{" "}
                 <Link to="/register">Register here</Link> {/* Link to the register page */}
               </p>
             </div>
-            {/* </div> */}
-
           </form>
+            {/* </div> */}
         </div>
       </div>
     </div>

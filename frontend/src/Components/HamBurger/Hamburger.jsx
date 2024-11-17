@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa"; // Import the FaTimes icon for closing
 import { Link } from "react-router-dom"; 
 import { Nav } from "../Navbar/NavbarElements";
+import "./Hamburger.css";
 
 // Hamburger Menu Icon (Bars)
 export const Bars = styled(FaBars)`
@@ -75,6 +76,10 @@ const Menu = styled.ul`
     display: block;
     padding: 5px 0;
   }
+
+  .last-btn {
+    color: #fff;
+    }
 `;
 
 const HamBurger = () => {
@@ -94,6 +99,25 @@ const HamBurger = () => {
 
       {/* The Dropdown Menu */}
       <Menu isOpen={isMenuOpen}>
+      <li>
+        <Link to = "/" onClick={(e) => {
+          e.preventDefault();
+          const navbarHeight = document.querySelector(Nav)?.offsetHeight || 0; //finds navbar fixed height
+            const element = document.getElementById("home");
+            if (element) {
+              const elementPosition = element.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.scrollY  - navbarHeight;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+              });
+            }
+          toggleMenu();
+        }}>
+          Home
+          </Link>
+      </li>
+
       <li>
           <Link to = "/about" onClick={(e) => {
               e.preventDefault(); 
@@ -209,6 +233,15 @@ const HamBurger = () => {
               toggleMenu();
             }}>
             Contact Us
+          </Link>
+        </li>
+
+        <li>
+          <Link to="/LoginModal" className="last-btn btn btn-primary" onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "/LoginModal";
+          }}>
+            BOOK NOW
           </Link>
         </li>
       </Menu>

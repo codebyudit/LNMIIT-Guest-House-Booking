@@ -86,7 +86,7 @@ ul {
 }
 
 .main{
-    background-color: #444444;
+    /* background-color: white; */
     padding: 50px 32px;
     margin: 0 50px;
     border-radius: 6px;
@@ -110,4 +110,10 @@ ul {
 #outer  h2{
     color: black;
 }
+
+
+.ite{
+    color: black;
+}
+
 
