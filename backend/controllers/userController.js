@@ -59,7 +59,7 @@ const register = async (req, res) => {
       sendEmail(
         user.email,
         'Welcome to Our Service',
-        `Hi ${user.name},\n\nThank you for registering with us.\n\nBest regards,\nYour Company`
+        `Hi ${user.username},\n\nThank you for registering with us.\n\nBest regards,\nYour Company`
       );
   
       res.json({ success: true, token });

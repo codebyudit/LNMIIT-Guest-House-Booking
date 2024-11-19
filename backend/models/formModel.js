@@ -33,12 +33,12 @@ const formSchema = new mongoose.Schema({
 
     numberOfFemales: {
         type: Number,
-        required: true
+        // required: true
     },
 
     numberOfChildren: {
         type: Number,
-        required: true
+        // required: true
     },
 
     

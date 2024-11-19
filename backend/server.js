@@ -12,6 +12,7 @@ import roomAvailabilityRouter from './routes/roomAvailabilityRoute.js';
 import bookingRouter from './routes/bookingRoute.js';
 import getFacultyInfoRouter from './routes/getFacultyInfoRouter.js';
 import emailRouter from './routes/emailForward.js';
+import adminAuth from './routes/adminAuthRoute.js';
 
 const app = express()
 
@@ -33,6 +34,7 @@ app.use('/api' , roomAvailabilityRouter)
 app.use("/api" , emailRouter)
 app.use("/api", getFacultyInfoRouter)
 app.use('/api', bookingRouter)
+app.use('/api', adminAuth)
 
 connectDB();
 
