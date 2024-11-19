@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Register.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const RegisterModal = () => {
   const [userType, setUserType] = useState("");
@@ -34,12 +35,13 @@ const RegisterModal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return;
     }
     
     if (!validateEmail()) {
-      alert("Please enter a valid email address based on your user type.");
+      // alert("Please enter a valid email address based on your user type.");
+      toast.error("Please enter a valid email address based on your user type.");
       return;
     }
 
@@ -54,14 +56,14 @@ const RegisterModal = () => {
       console.log(username)
 
       if (response.data.success) {
-        alert("Registration successful! Please log in.");
+        toast.success("Registration successful! Please log in.");
         navigate("/LoginModal");
       } else {
         alert(response.data.message);
       }
     } catch (error) {
       console.error("Registration error:", error);
-      alert("Registration failed. Please try again.");
+      toast.error("Registration failed. Please try again.");
     }
   };
 

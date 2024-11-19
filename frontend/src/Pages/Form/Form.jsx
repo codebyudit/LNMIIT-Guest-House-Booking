@@ -12,6 +12,7 @@ import {
   useGuestNameValidation,
   useGuestMobileNumberValidation,
 } from './useCustomValidation';
+import toast from 'react-hot-toast';
 
 const GuestHouseBookingForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const GuestHouseBookingForm = () => {
     studentRollNumber: '',
     studentDepartment: '',
     studentMobileNumber: '',
+    photo: null,
     numberOfMales: '',
     numberOfFemales: '',
     numberOfChildren: '',
@@ -31,6 +33,7 @@ const GuestHouseBookingForm = () => {
     gender: '',
     guestPurpose: '',
   });
+  const [notification, setNotification] = useState('');
 
   const { errorMessage1, validateFullName } = useFullNameValidation();
   const { errorMessage8, validateGuestName } = useGuestNameValidation();
@@ -67,13 +70,37 @@ const GuestHouseBookingForm = () => {
     }));
   };
 
+  const handleFileChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      photo: e.target.files[0],
+    }));
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form data:', formData);
+    const data = new FormData();
+
+    for (const key in formData) {
+      data.append(key, formData[key]);
+    }
 
     try {
-      const response = await axios.post('http://localhost:9002/form', formData);
+      const response = await axios.post('http://localhost:4001/api/form', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
       console.log('Form submitted successfully:', response.data);
+      toast.success("Form submitted successfully!");
+      setNotification("Form submitted successfully!");
+      
+
+      setTimeout(() => {
+        setNotification("");
+      }, 3000);
 
       // Reset form fields after successful submission
       setFormData({
@@ -92,10 +119,16 @@ const GuestHouseBookingForm = () => {
         guestRelation: '',
         gender: '',
         guestPurpose: '',
+        photo: null,
       });
     } catch (error) {
       console.error('Form submission error:', error);
       // Handle error, display error message to the user, etc.
+      toast.error("Form submission failed. Please try again.");
+      setNotification("Form submission failed. Please try again.");
+      setTimeout(() => {
+        setNotification("");
+      }, 3000);
     }
   };
 
@@ -185,6 +218,19 @@ const GuestHouseBookingForm = () => {
                     onChange={handleChange}
                   />
                   {errorMessage2 && <div className="error-message">{errorMessage2}</div>}
+                </div>
+
+
+
+                <div className="input-field">
+                  <label>Photo</label>
+                  <input
+                    type="file"
+                    name="photo"
+                    placeholder="Insert RFID Picture"
+                    onChange={handleFileChange}
+                  />
+                  {errorMessage6 && <div className="error-message">{errorMessage6}</div>}
                 </div>
 
                 <div className="input-field">
@@ -348,6 +394,7 @@ const GuestHouseBookingForm = () => {
               </div>
             </div>
           </div>
+          {notification && <div className="notification">{notification}</div>}
         </form>
       </div>
     </div>

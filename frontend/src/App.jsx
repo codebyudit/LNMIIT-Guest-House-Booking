@@ -20,6 +20,8 @@ import Gallery from './Pages/Gallery/gallery';
 import GuestHouseFacultyBookingForm from './Pages/FacultyForm/FacultyForm';
 import ForgotPassword from './Components/LoginModal/ForgotPassword';
 
+
+
 const App = () => {
   return (
     <UserProvider>
@@ -35,7 +37,7 @@ const App = () => {
           <Route path='/contactus' element={<Contactus />} />
           <Route path='/Form' exact element={<GuestHouseBookingForm />} />
           <Route path='/facultyForm' exact element={<GuestHouseFacultyBookingForm />}/>
-          <Route path='/login/student' element={<Login />} />
+          {/* <Route path='/login/student' element={<Login />} /> */}
           <Route path='/register' element={<Register />} />
           <Route path='/register/faculty' element={<FacultyRegister />} />
           <Route path='/login/faculty' element={<FacultyLogin />} />

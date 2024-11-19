@@ -5,14 +5,13 @@ import {Link ,  useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
 import { useContext } from "react";
-// import Navbar from "../Navbar";
-// import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import  toast from "react-hot-toast";
+
 
 const LoginModal = () => {
   const [userType, setUserType] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [captchaInput, setCaptchaInput] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
@@ -20,13 +19,6 @@ const LoginModal = () => {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
-  // const handleCaptchaChange = (e) => setCaptchaInput(e.target.value);
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Implement your login logic here
-  //   console.log({ userType, username, password, captchaInput });
-  // };
 
   const handleBackToHome = () => {
     navigate("/"); // Navigate to home page
@@ -42,6 +34,7 @@ const LoginModal = () => {
       const response = await axios.post('http://localhost:4001/api/user/login', { email, password, username });
 
       if (response.data.success) {
+        toast.success("Login successful!");
         console.log("Login successful", response.data);
         setUser({username})
         
@@ -51,15 +44,15 @@ const LoginModal = () => {
         } else if (userType === "staff") {
           navigate('/facultyForm');
         } else {
-          console.error("Invalid user type for redirection");
+          console.error("Invalid user type.");
         }
       } else {
         console.error(response.data.msg);
-        alert("User does not exist. Please check your credentials or register.");
+        toast.error(response.data.msg || "User does not exist. Please check your credentials.");
       }
     } catch (error) {
       console.error("Login error:", error);
-      alert("An error occurred during login. Please try again.");
+      toast.error("An error occurred during login. Please try again.");
     }
   };
 
