@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./FacultyInfoPage.css";
 import axios from "axios";
 import moment from "moment";
+import { toast } from "react-hot-toast";
 
 const FacultyInfoPage = () => {
   const [info, setInfo] = useState([]);
@@ -14,13 +15,13 @@ const FacultyInfoPage = () => {
       });
 
       if (response.data.success) {
-        alert("Email forwarded to the dean");
+        toast.success("Email successfully forwarded.");
       } else {
-        alert("Failed to send email");
+        alert("Failed to send email.");
       }
     } catch (err) {
       console.log(err);
-      alert("Failed to send email");
+      toast.error("Failed to send email.");
     }
   };
 
