@@ -3,6 +3,7 @@ import axios from "axios";
 import "./RoomStatus.css";
 import { myContext } from "../../context/Context"; // Assuming context is set up to share data
 import toast from "react-hot-toast";
+import "./RoomStatus.css";
 
 const RoomStatus = () => {
   const [rooms, setRooms] = useState([]);
@@ -12,7 +13,7 @@ const RoomStatus = () => {
   const [roomNo, setRoomNo] = useState([]);
 
   // const { info } = useContext(myContext); // Using shared info data from context
-  const url = "http://loaclhost:4001";
+  const url = "http://localhost:4001";
 
   // Fetch all applied room data
   const fetchRooms = async () => {
@@ -31,21 +32,7 @@ const RoomStatus = () => {
     }
   };
 
-  // Fetch available rooms based on selected dates
-  // const fetchAvailableRooms = async (checkinDate, checkoutDate) => {
-  //   try {
-  //     const response = await axios.get(`${url}/api/room-available`, {
-  //       params: { checkinDate, checkoutDate }
-  //     });
-  //     if (response.status === 200) {
-  //       setAvailableRooms(response.data.availableRooms);
-  //     } else {
-  //       console.error("Failed to fetch available rooms.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching available rooms:", error);
-  //   }
-  // };
+
 
   useEffect(() => {
     fetchRooms();
@@ -80,20 +67,32 @@ const RoomStatus = () => {
 
   const handleAllotRoom = async () => {
     if (allottedRoom) {
-      // const selectedRoom = rooms.find(room => room._id === selectedRoomId);
-
       try {
-        // const response = await axios.post(`${url}/api/room-info`, {
-          const response = await axios.patch(
-            `${url}/api/applications/${selectedRoomId}`,{
-          roomNo: allottedRoom,
-          // studentName: selectedRoom.studentName,
-          // checkinDate: selectedRoom.arrivalDate,
-          // checkoutDate: selectedRoom.departureDate,
-        });
+        const response = await axios.patch(
+          `${url}/api/applications/${selectedRoomId}`,
+          {
+            roomNumber: allottedRoom,
+          }
+        );
 
         if (response.status === 200 && response.data.success) {
-          toast.success(`Room ${allottedRoom} allotted successfully.`);
+          toast.success(`${allottedRoom} allotted successfully.`);
+
+          // Fetch the updated room details for sending an email
+          const roomDetails = rooms.find((room) => room._id === selectedRoomId);
+          if (roomDetails) {
+            // Construct the email address based on the roll number
+            const email = `${roomDetails.studentRollNumber}@lnmiit.ac.in`;
+
+            // Send email notification
+            await axios.post(`${url}/api/send-email-confirm`, {
+              email,
+              name: roomDetails.studentName,
+              roomNumber: allottedRoom,
+            });
+            toast.success("Email notification sent.");
+          }
+
           closeModal();
           fetchRooms();
           setRoomNo([allottedRoom, ...roomNo]);
@@ -101,11 +100,28 @@ const RoomStatus = () => {
           toast.error("Failed to allot room.");
         }
       } catch (error) {
-        console.error("Error allotting room:", error);
-        toast.error("Error allotting room. Please try again.");
+        toast.error("Error allotting room.");
       }
     } else {
       toast("Please select a room.");
+    }
+  };
+
+  const sendEmail = async (room) => {
+    const email = `${room.studentRollNumber}@lnmiit.ac.in`;
+    try {
+      const response = await axios.post(`${url}/api/send-email-confirm`, {
+        email,
+        name: room.studentName,
+        roomNumber: room.roomNumbers || "Not Allotted",
+      });
+      if (response.status === 200 && response.data.success) {
+        toast.success("Email sent successfully.");
+      } else {
+        toast.error("Failed to send email.");
+      }
+    } catch (error) {
+      toast.error("Error sending email.");
     }
   };
 
@@ -125,8 +141,10 @@ const RoomStatus = () => {
               <th>Roll Number</th>
               <th>Status</th>
               <th>Room Number</th>
-              <th>Actions</th>
               <th>Allot Room</th>
+              <th>Actions</th>
+              <th>Email</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -137,15 +155,7 @@ const RoomStatus = () => {
                 <td>{room.status || "Pending"}</td>
                 <td>{room.roomNumbers ? room.roomNumbers : "Not Allotted"}</td>
                 <td>
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDelete(room._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td>
-                  <button
+                <button
                     className="allot-button"
                     onClick={() =>
                       openModal(room._id)
@@ -153,6 +163,26 @@ const RoomStatus = () => {
                   >
                     Allot Room
                   </button>
+
+                  
+
+                 
+                </td>
+                <td>
+                <button
+                    className="delete-button"
+                    onClick={() => handleDelete(room._id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td>
+                <button
+                      className="email-button"
+                      onClick={() => sendEmail(room)}
+                    >
+                      Send Email
+                    </button>
                 </td>
               </tr>
             ))}
