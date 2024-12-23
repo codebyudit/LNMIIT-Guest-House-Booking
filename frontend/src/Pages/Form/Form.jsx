@@ -87,7 +87,7 @@ const GuestHouseBookingForm = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:4001/api/form', data, {
+      const response = await axios.post('https://lnmiit-guest-house-booking.onrender.com/api/form', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -485,7 +485,7 @@ export default GuestHouseBookingForm;
 
 //   const onFormSubmit = async (event) => {
 //     event.preventDefault();
-//     const url = 'http://localhost:4001/api/form';
+//     const url = 'https://lnmiit-guest-house-booking.onrender.com/api/form';
 //     const data = new FormData();
 //     data.append('name', formData.name);
 //     data.append('rollno', formData.rollno);

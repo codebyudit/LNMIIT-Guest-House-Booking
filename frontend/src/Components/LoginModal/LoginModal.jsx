@@ -31,7 +31,7 @@ const LoginModal = () => {
     e.preventDefault();
     
     try {
-      const response = await axios.post('http://localhost:4001/api/user/login', { email, password, username });
+      const response = await axios.post('https://lnmiit-guest-house-booking.onrender.com/api/user/login', { email, password, username });
 
       if (response.data.success) {
         toast.success("Login successful!");

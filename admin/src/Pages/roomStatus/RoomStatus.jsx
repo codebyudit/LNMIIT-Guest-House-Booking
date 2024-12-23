@@ -13,7 +13,7 @@ const RoomStatus = () => {
   const [roomNo, setRoomNo] = useState([]);
 
   // const { info } = useContext(myContext); // Using shared info data from context
-  const url = "http://localhost:4001";
+  const url = "https://lnmiit-guest-house-booking.onrender.com";
 
   // Fetch all applied room data
   const fetchRooms = async () => {

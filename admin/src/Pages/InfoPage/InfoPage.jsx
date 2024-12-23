@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 
 const InfoPage = () => {
   const {info, setInfo} = useContext(myContext)
-  const url = "http://localhost:4001";
+  const url = "https://lnmiit-guest-house-booking.onrender.com";
 
   const handleForward = async (student) => {
     try {
