@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 
 const FacultyInfoPage = () => {
   const [info, setInfo] = useState([]);
-  const url = "https://localhost:4001";
+  const url = "https://lnmiit-guest-house-booking.onrender.com";
 
   const handleForward = async (facultyEmployeeId) => {
     try {
