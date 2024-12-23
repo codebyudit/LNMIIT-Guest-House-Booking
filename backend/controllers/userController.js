@@ -58,8 +58,8 @@ const register = async (req, res) => {
       const token = createToken(user._id);
       sendEmail(
         user.email,
-        'Welcome to Our Service',
-        `Hi ${user.username},\n\nThank you for registering with us.\n\nBest regards,\nYour Company`
+        'Welcome to LNMIIT Guest House',
+        `Hi ${user.username},\n\nThank you for registering with us.\n\nBest regards,\nLNMIIT Guest House`
       );
   
       res.json({ success: true, token });
