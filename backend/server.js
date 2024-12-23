@@ -20,7 +20,11 @@ const app = express()
 
 dotenv.config();
 
-const port = 4001;
+const port = process.env.PORT || 4001;
+
+app.get('/', (req, res) => {
+    res.send('Backend is up and running!');
+})
 
 app.use(express.json())
 app.use(cors())
