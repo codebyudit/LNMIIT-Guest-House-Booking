@@ -61,17 +61,17 @@ export const useGuestMobileNumberValidation = () => {
 };
 
 export const useRollNumberValidation = () => {
-  const [errorMessage3, setErrorMessage] = useState('');
-  
+  const [errorMessage3, setErrorMessage] = useState("");
+
   const validateRollNumber = (rollNumber) => {
-    const regex = /^\d{2}[A-Za-z]{3}\d{3}$/; // Regular expression to match the specified format
+    const regex = /^\d{2}[A-Za-z]{3}\d{3}$/;
     if (!regex.test(rollNumber)) {
-      setErrorMessage('* Please enter a valid roll number (ex: 21XXX111)');
+      setErrorMessage("* Please enter a valid roll number (ex: 21XXX111)");
     } else {
-      setErrorMessage('');
+      setErrorMessage("");
     }
   };
-  
+
   return { errorMessage3, validateRollNumber };
 };
 

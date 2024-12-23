@@ -5,8 +5,6 @@ const About = () => {
   return (
     <div >
        
-       
-
         <section id='outer' >
             <div className='s-title'>
               <h2>

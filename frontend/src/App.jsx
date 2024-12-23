@@ -1,8 +1,7 @@
-// import React from 'react';
+
 import Navbar from './Components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
-// import Form from 'antd/es/form/Form'; // or import Form from './Pages/Form';
 import Availability from './Pages/Availability/Availability';
 import About from './Pages/About/about';
 import Login from './Components/Login/Login';

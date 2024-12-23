@@ -72,14 +72,7 @@ const Home = () => {
         <div>
           <Contactus />
         </div>
-
-        {/* <div>
-      <Services />
-    </div> */}
-        {/* <div>
-      <Gallery />
-    </div> */}
-
+        
         <div>
           <Footer />
         </div>

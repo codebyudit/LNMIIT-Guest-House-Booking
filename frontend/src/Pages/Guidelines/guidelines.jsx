@@ -6,7 +6,6 @@ const Guidelines = () => {
     <div >
         <section id='guidelines' className='guidelines'>
           
-          
             <div className='section-title'>
               <h2>GENERAL GUIDELINES</h2>
             </div>
